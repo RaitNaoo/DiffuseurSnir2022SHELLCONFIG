@@ -24,14 +24,14 @@ echo "#l'host est l'ip ou le dns de votre bdd: x.x.x.x"
 echo "-Entrer l'hote : "  
 read hostbdd
 
-find  /home/pi/Documents/propre/configuration/ini/config.ini -type f -exec sed -i 's/hostbdd\=.*/hostbdd\='$hostbdd'/g' {} \;
+find  /home/pi/Documents/configuration/ini/config.ini -type f -exec sed -i 's/hostbdd\=.*/hostbdd\='$hostbdd'/g' {} \;
 
 
 echo "\n#Utilisateur autorisé à acceder à la base de donnée"
 echo "-Entrer l'utilisateur de la bdd : "
 read userbdd
 
-find  /home/pi/Documents/propre/configuration/ini/config.ini -type f -exec sed -i 's/userbdd\=.*/userbdd\='$userbdd'/g' {} \;
+find  /home/pi/Documents/configuration/ini/config.ini -type f -exec sed -i 's/userbdd\=.*/userbdd\='$userbdd'/g' {} \;
 
 echo "\n#Mettre le mot de passe en clair de la bdd"
 while true; do
@@ -44,7 +44,7 @@ while true; do
         [Nn]* ) echo "-Entrer le mot de pase de la bdd : "
                 read passbdd
 
-                find  /home/pi/Documents/propre/configuration/ini/config.ini -type f -exec sed -i 's/passbdd\=.*/passbdd\='$passbdd'^/g' {} \;
+                find  /home/pi/Documents/configuration/ini/config.ini -type f -exec sed -i 's/passbdd\=.*/passbdd\='$passbdd'^/g' {} \;
                 break;;
     esac
 done
@@ -54,7 +54,7 @@ echo "\n#Nom de la base de donnée à utiliser"
 echo "-Entrer le Nom de la bdd : "
 read namebdd
 
-find  /home/pi/Documents/propre/configuration/ini/config.ini -type f -exec sed -i 's/namebdd\=.*/namebdd\='$namebdd'/g' {} \;
+find  /home/pi/Documents/configuration/ini/config.ini -type f -exec sed -i 's/namebdd\=.*/namebdd\='$namebdd'/g' {} \;
 
 mysql -h$hostbdd -u$userbdd --password="$passbdd" $namebdd -e 'SELECT * FROM ecran'
 
@@ -74,7 +74,7 @@ while true; do
     esac
 done
 
-find /home/pi/Documents/propre/configuration/ini/config.ini -type f -exec sed -i 's/idecran\=.*/idecran\='$idecran1'/g' {} \;
+find /home/pi/Documents/configuration/ini/config.ini -type f -exec sed -i 's/idecran\=.*/idecran\='$idecran1'/g' {} \;
 
 echo "\n\n\n\n #############Récapitulatif"
 echo "################################################"
@@ -99,6 +99,6 @@ while true; do
     esac
 done
 
-cp /home/pi/Documents/propre/configuration/ini/config.ini /var/www/afficheur/ | sed -i 's/\#/\;/g' /var/www/afficheur/config.ini;
+cp /home/pi/Documents/configuration/ini/config.ini /var/www/afficheur/ | sed -i 's/\#/\;/g' /var/www/afficheur/config.ini;
 
 echo "\n#C'est fait Vous pouvez fermer le programme"

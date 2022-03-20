@@ -1,0 +1,4 @@
+@xset s noblank @xset s off @xset -dpms  
+@chromium-browser --kiosk --incognito -disable-translate --app=http://82.66.39.41/projet/diffuseur/site/afficheur/afficheur.php?&ecran=1&ref=0 
+@unclutter -idle 0
+
